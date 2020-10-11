@@ -9,16 +9,27 @@ import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
 /**
- * In the classic problem FizzBuzz , you are told to print the numbers from 1 to n. However,
- * when the number is divisible by 3, print "Fizz ': When it is divisible by 5, print " Buzz ". When it is
- * divisible by 3 and 5, print "FizzBuzz".
- * This is Multi-threaded version of FizzBuzz with four th reads. One thread checks for divisibility
- * of 3 and prints" Fizz ': Another thread is responsible for divisibility of 5 and prints " Buzz ': A third thread
- * is responsible for divisibility of 3 and 5 and prints "FizzBuzz ': A four th thread does the numbers.
- *
- * The problem is about coordination of Thread and it is solved using a {@link Phaser} synchronizer.
+ * In the classic problem FizzBuzz , you are told to print the numbers from 1 to n.
+ * However, when the number is divisible by 3, print "Fizz". <br>
+ * When it is divisible by 5, print "Buzz". <br>
+ * When it is divisible by 3 and 5, print "FizzBuzz". <br>
+ * This is Multi-threaded version of FizzBuzz with four threads. <br>
+ * One thread checks for divisibility of 3 and prints "Fizz". <br>
+ * Another thread is responsible for divisibility of 5 and prints "Buzz"<br>
+ * A third thread is responsible for divisibility of 3 and 5 and prints "FizzBuzz"<br>
+ * A four th thread does the numbers.
+ * <p>
+ * The problem is about coordination of threads and it is solved using a {@link Phaser} synchronizer.
  * The behavior is similar to a {@link java.util.concurrent.CountDownLatch} but it is more flexible as it allows
  * threads to repeatedly perform actions for a given number of iterations which is the case of this game.
+ * </p>
+ * <p>
+ *     My first attempt used CountDownLatch an it was inspired by an example in Item81 of Effective Java 3rd Edition<br>
+ *     I realized soon that CountDownLatch is better suited to sync a 1 off action across a set of Threads.
+ *     I started looking into other synchronizers in the java.util.concurrent package and I stumbled upon Phaser.<br>
+ *     I reworked the problem using it and I was satisfied with the result.
+ *     I was reminded by another great piece of advice contained in Item59 of Effective Java: Know and use the libraries
+ * </p>
  */
 public class ConcurrentFizzBuzz {
 
